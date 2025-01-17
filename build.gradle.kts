@@ -1,5 +1,5 @@
 plugins {
-    id("com.gradleup.shadow") version "8.3.2" // Import shadow API.
+    id("com.gradleup.shadow") version "8.3.5" // Import shadow API.
     java // Tell gradle this is a java project.
     eclipse // Import eclipse plugin for IDE integration.
     kotlin("jvm") version "2.0.21" // Import kotlin jvm plugin for kotlin/java integration.
@@ -11,7 +11,7 @@ java {
 }
 
 group = "net.trueog.buffrates-og" // Declare bundle identifier.
-version = "2.1" // Declare plugin version (will be in .jar).
+version = "2.1.1" // Declare plugin version (will be in .jar).
 val apiVersion = "1.19" // Declare minecraft server target version.
 
 tasks.named<ProcessResources>("processResources") {
