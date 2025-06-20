@@ -2,9 +2,10 @@
 // Author: Sekalol15
 package plugin
 
+import java.io.File
 import org.bukkit.configuration.file.FileConfiguration
 import org.bukkit.configuration.file.YamlConfiguration
-import java.io.File
+
 object Config {
     private lateinit var config: FileConfiguration
     private lateinit var file: File
@@ -24,15 +25,15 @@ object Config {
         config.save(file)
     }
 
-
-    fun getSlimeChanceEnabled() : Boolean {
+    fun getSlimeChanceEnabled(): Boolean {
         return config.get("slimeChanceEnabled") as Boolean
     }
+
     fun getSlimeChance(): Double {
         return config.get("slimeChance") as Double
     }
 
-    fun getRaiderQuantity() : Int {
+    fun getRaiderQuantity(): Int {
         return config.get("raiderQuantity") as Int
     }
 
@@ -44,9 +45,10 @@ object Config {
         return config.get("zombieIron") as Double
     }
 
-    fun getWardenChanceEnabled() : Boolean {
+    fun getWardenChanceEnabled(): Boolean {
         return config.get("wardenChanceEnabled") as Boolean
     }
+
     fun getWardenChance(): Double {
         return config.get("wardenChance") as Double
     }

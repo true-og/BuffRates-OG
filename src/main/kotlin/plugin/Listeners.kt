@@ -2,6 +2,7 @@
 // Author: Sekalol15
 package plugin
 
+import kotlin.random.Random
 import org.bukkit.Material
 import org.bukkit.entity.EntityType
 import org.bukkit.event.EventHandler
@@ -9,8 +10,6 @@ import org.bukkit.event.Listener
 import org.bukkit.event.entity.CreatureSpawnEvent
 import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.inventory.ItemStack
-
-import kotlin.random.Random
 
 class Listeners : Listener {
     @EventHandler
@@ -25,43 +24,41 @@ class Listeners : Listener {
         val entityPos = event.entity.location
         val entityType = event.getEntityType()
 
-
-        //check the conditions and spawn the slime if correct
-        if (event.entity.entitySpawnReason != CreatureSpawnEvent.SpawnReason.CUSTOM && Random.nextDouble() <= SlimeChance && SlimeChanceEnabled == true) {
+        // check the conditions and spawn the slime if correct
+        if (
+            event.entity.entitySpawnReason != CreatureSpawnEvent.SpawnReason.CUSTOM &&
+                Random.nextDouble() <= SlimeChance &&
+                SlimeChanceEnabled == true
+        ) {
 
             event.entity.world.spawnEntity(entityPos, EntityType.SLIME, CreatureSpawnEvent.SpawnReason.CUSTOM)
         }
 
         if (event.entity.entitySpawnReason == CreatureSpawnEvent.SpawnReason.RAID && raiderQuantity != 0) {
 
-
-            for(i in 1..raiderQuantity) {
+            for (i in 1..raiderQuantity) {
                 event.entity.world.spawnEntity(entityPos, entityType, CreatureSpawnEvent.SpawnReason.CUSTOM)
-
-
-
-
             }
         }
 
-        //check the conditions and spawn the slime if correct
-        if (event.entity.entitySpawnReason != CreatureSpawnEvent.SpawnReason.CUSTOM && Random.nextDouble() <= WardenChance && WardenChanceEnabled == true) {
+        // check the conditions and spawn the slime if correct
+        if (
+            event.entity.entitySpawnReason != CreatureSpawnEvent.SpawnReason.CUSTOM &&
+                Random.nextDouble() <= WardenChance &&
+                WardenChanceEnabled == true
+        ) {
 
             event.entity.world.spawnEntity(entityPos, EntityType.WARDEN, CreatureSpawnEvent.SpawnReason.CUSTOM)
         }
 
         if (event.entity.entitySpawnReason == CreatureSpawnEvent.SpawnReason.RAID && raiderQuantity != 0) {
 
-
-            for(i in 1..raiderQuantity) {
+            for (i in 1..raiderQuantity) {
                 event.entity.world.spawnEntity(entityPos, entityType, CreatureSpawnEvent.SpawnReason.CUSTOM)
-
-
-
-
             }
         }
     }
+
     @EventHandler
     fun EntityDeathEvent(event: EntityDeathEvent) {
 
@@ -72,15 +69,6 @@ class Listeners : Listener {
             val entityPos = event.entity.location
             val iron = ItemStack(Material.IRON_INGOT)
             event.entity.world.dropItemNaturally(entityPos, iron)
-
-
-
         }
-
     }
 }
-
-
-
-
-
