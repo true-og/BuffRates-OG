@@ -36,9 +36,9 @@ repositories {
 dependencies {
     compileOnly("org.purpurmc.purpur:purpur-api:1.19.4-R0.1-SNAPSHOT") // Declare purpur API version to be packaged.
     compileOnly("io.github.miniplaceholders:miniplaceholders-api:2.2.3") // Import MiniPlaceholders API.
-    implementation("org.jetbrains.kotlin:kotlin-stdlib")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
-    compileOnly(project(":libs:Utilities-OG"))
+    implementation("org.jetbrains.kotlin:kotlin-stdlib") // Import Kotlin standard library.
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2") // Import Kotlin async library.
+    compileOnly(project(":libs:Utilities-OG")) // Import TrueOG Network Utilities-OG API.
 }
 
 tasks.withType<AbstractArchiveTask>().configureEach { // Ensure reproducible .jars
