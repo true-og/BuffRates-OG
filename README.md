@@ -6,7 +6,7 @@ Buffs following mob spawn and drop rates:
 - Raiders
 - Zombie iron drops
 
-Gradle Version: 8.14.2
+Gradle Version: 8.14.3
 
 Java Version: GraalVM CE 17.0.9
 
