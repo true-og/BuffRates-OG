@@ -19,3 +19,10 @@ zombieIron: 0.1
 # chance to spawn a warden
 wardenChanceEnabled: false
 wardenChance: 0.001
+
+# warden buff keeping 1.8 combat as hard as 1.9
+# health x1.73 restores time-to-kill lost to the faster 1.8 hit rate
+# damage x2.8 offsets 1.8 armour absorbing a flat 80%
+wardenBuffEnabled: true
+wardenHealthMultiplier: 1.73
+wardenAttackDamageMultiplier: 2.8

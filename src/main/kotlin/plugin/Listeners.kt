@@ -4,7 +4,10 @@ package plugin
 
 import kotlin.random.Random
 import org.bukkit.Material
+import org.bukkit.attribute.Attribute
+import org.bukkit.entity.Entity
 import org.bukkit.entity.EntityType
+import org.bukkit.entity.LivingEntity
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.CreatureSpawnEvent
@@ -35,6 +38,28 @@ class Listeners : Listener {
 
         if (reason == CreatureSpawnEvent.SpawnReason.RAID && raiderQuantity > 0) {
             repeat(raiderQuantity) { world.spawnEntity(pos, type, CreatureSpawnEvent.SpawnReason.CUSTOM) }
+        }
+
+        if (type == EntityType.WARDEN && Config.getWardenBuffEnabled()) {
+            buffWarden(event.entity)
+        }
+    }
+
+    // 1.8 combat lets players land 2 full hits per second instead of 1.6 and 1.8 armour absorbs a flat
+    // 80%, so warden health and melee damage are scaled to keep the fight as hard as it is under 1.9.
+    // Attribute base values persist in entity NBT, so each warden is buffed once at spawn.
+    private fun buffWarden(entity: Entity) {
+        if (entity !is LivingEntity) return
+
+        val maxHealth = entity.getAttribute(Attribute.GENERIC_MAX_HEALTH)
+        if (maxHealth != null) {
+            maxHealth.baseValue = maxHealth.baseValue * Config.getWardenHealthMultiplier()
+            entity.health = maxHealth.value
+        }
+
+        val attackDamage = entity.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE)
+        if (attackDamage != null) {
+            attackDamage.baseValue = attackDamage.baseValue * Config.getWardenAttackDamageMultiplier()
         }
     }
 

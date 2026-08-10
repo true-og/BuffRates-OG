@@ -52,4 +52,17 @@ object Config {
     fun getWardenChance(): Double {
         return config.get("wardenChance") as Double
     }
+
+    // Defaults are supplied here so configs written before this buff existed keep working
+    fun getWardenBuffEnabled(): Boolean {
+        return config.getBoolean("wardenBuffEnabled", true)
+    }
+
+    fun getWardenHealthMultiplier(): Double {
+        return config.getDouble("wardenHealthMultiplier", 1.73)
+    }
+
+    fun getWardenAttackDamageMultiplier(): Double {
+        return config.getDouble("wardenAttackDamageMultiplier", 2.8)
+    }
 }
