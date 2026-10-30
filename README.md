@@ -16,4 +16,4 @@ Java Version: GraalVM CE 17.0.9
 
 Minecraft API: Purpur 1.19.4
 
-BuffRates-OG is public domain software released under the terms of [The Unlicense](https://github.com/true-og/Template-OG/blob/main/LICENSE).
+BuffRates-OG is public domain software released under the terms of [The Unlicense](https://git.trueog.net/trueog/Template-OG/src/branch/main/LICENSE).
